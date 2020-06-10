@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <title>CITY'S CAKE</title>
+     <link rel="stylesheet" type="text/css" href="../css/main.css">
+   <link rel="stylesheet" type="text/css" href="../css/order.css">
+   <script rel="javascript" type="text/javascript" src="../javascript/cakemenu.js"></script>
+   <script rel="javascript" type="text/javascript" src="../javascript/order.js"></script>
+   <script type="text/javascript">
+      function originals(){
+        document.getElementById("error").style.display="none";
+        document.body.style.opacity="1";
+
+
+   }
+   </script>
+</head>
+
+<body>
+  <div id="error">
+    <p id="one"></p>
+    <p id="two"></p>
+  </div>
+  <div class="mainContainer" onclick="originals()">
+  <div class="intro">
+
+  <figure id="logo">
+    <img src="../images/logo.png" alt="logo" width="80" height="90">
+  </figure>
+<h1>CITY'S CAKE</h1>
+<img class="balloons" src="../images/ballons.png" alt="balloons" width="5">
+<div class="list">
+<img src="../images/viewlist.png" alt="viewlist">
+<div class="content">
+  <p><a href="home.html">HOME</a></p>
+  <p><a href="order.html">ORDER</a></p>
+  <p><a href="about.html">ABOUT US</a></p>
+  <p><a href="#">TERMS OF USE</a></p>
+</div>
+</div>
+</div>
+
+
+<h2 id="order">ORDER PAGE</h2>
+
+<form name="myform" class="form" id="myform" action="print.html">
+ <fieldset>
+   <legend>Order Information</legend>
+    <div class="row">
+     <div class="col-25">
+   <label for="number">Tel No.</label>
+     </div>
+     <div class="col-75">
+         <input type="number" id="number" name="number" value="66504430">
+    </div>
+  </div>
+     <div class="row">
+       <div class="col-25">
+         <label for="date">Pick Up Date</label>
+      </div>
+      <div class="col-75">
+        <input type="date" name="date" id="date" value="2018-11-20">
+      </div>
+    </div>
+        <br>
+  <input type="radio" id="deliver" name="ordertype" value="Delivery">Delivery
+  <input type="radio" id="pickup" name="ordertype" value="Pick Up">Pick Up<br>
+
+
+
+
+
+<div id="container">
+</div>
+
+
+
+
+<br><div id="ta">
+<table id="myTable">
+<caption id="caption" value="66504430"></caption>
+<thead>
+<tr>
+  <th>Cake Name</th>
+  <th>Qty</th>
+</tr>
+</thead>
+<tbody>
+
+</tbody>
+<tfoot>
+<tr>
+  <td><b>Total</b></td>
+  <td id="total"><b></b></td>
+</tr>
+</tfoot>
+</table>
+
+<input type="submit" id="Button" value="Print Invoice">
+</div>
+</fieldset>
+</form>
+
+</div>
+<footer onclick="original();">
+@CityU2017sources of Images and text from Wikipidea & courtesy of all-free-download.com
+<br>
+<ul class="nav">
+  <li><a href="home.html">HOME</a></li>
+  <li><a href="order.html">ORDER</a></li>
+  <li><a href="about.html">ABOUT US</a></li>
+  <li><a href="#">TERMS OF USE</a></li>
+</ul>
+</footer>
+</body>
+</html>

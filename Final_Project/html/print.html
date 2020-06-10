@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+   <meta charset="UTF-8">
+   <title>CITY'S CAKE</title>
+    <link rel="stylesheet" type="text/css" href="../css/main.css">
+    <link rel="stylesheet" type="text/css" href="../css/print.css">
+    <script rel="javascript" type="text/javascript" src="../javascript/cakemenu.js"></script>
+    <script type="text/javascript">
+      window.onload=init;
+
+        function init(){
+
+          var x= location.search.substr(1);
+          var z= x.split("&");
+          tele=getData(z,"number");
+          pickdate=getData(z,"date");
+          ot=getData(z,"ordertype");
+          document.getElementById("number").value = tele;
+          document.getElementById("date").value=pickdate;
+
+          if(ot=="Pick+Up"){
+            document.getElementById("pickup").checked=true;
+          }
+          else if(ot=="Delivery"){
+            document.getElementById("deliver").checked=true;
+          }
+
+        function getData(str,name){
+          var i=0;
+              for(i=0;i<str.length;i++){
+            var temp= str[i].split("=");
+            if(name==temp[0]){
+              return temp[1];
+            }
+          }
+        }
+
+
+
+
+        var len= window.localStorage.getItem("length");
+        var data=initMenu();
+        var i=0;
+        var qsum=0;
+        var psum=0;
+        var tb=document.querySelector("tbody");
+        for(i=0; i<len; i++){
+          cakeName= window.localStorage.getItem(i);
+          i++;
+          qnt= window.localStorage.getItem(i);
+          var row=tb.insertRow();
+          var cell1=row.insertCell();
+          var cell2=row.insertCell();
+          var cell3=row.insertCell();
+          qsum=qsum+Number(qnt);
+          cell1.innerHTML=cakeName;
+          cell2.innerHTML=qnt;
+          var m=price(cakeName);
+          var f=m*qnt;
+          psum=psum+f;
+          cell3.innerHTML=m*qnt;
+        }
+        document.getElementById("qsum").innerHTML=qsum;
+        document.getElementById("psum").innerHTML=psum;
+        function price(name){
+          var i=0;
+          for(i=0; i<data.length; i++){
+          a=data[i].description;
+          if(a==name){
+            return data[i].price;
+          }
+        }
+      }
+      document.querySelector("#cl").onclick=ClearStorage;
+
+      function ClearStorage(){
+
+        var r=confirm("do you want to clear the order");
+
+        if(r==true)
+        {
+            window.localStorage.clear();
+
+        }
+        else{
+          return false;
+        }
+
+      }
+
+    //  function kindlyConfirm(){
+      //  var r=confirm("do you want to clear the order");
+        //alert("abc");
+        //if(r==true)
+        //{
+          //  window.localStorage.clear();
+
+        //}
+        //else{
+          //return false;
+        //}
+      //}
+      }
+    </script>
+</head>
+
+<body>
+  <header>
+<div class="intro">
+  <figure id="logo">
+<img src="../images/logo.png" alt="logo" width="80" height="90">
+</figure>
+<h1>CITY'S CAKE</h1><br>
+<div class="list">
+<img src="../images/viewlist.png" alt="viewlist">
+<div class="content">
+  <p><a href="home.html">HOME</a></p>
+  <p><a href="order.html">ORDER</a></p>
+  <p><a href="about.html">ABOUT US</a></p>
+  <p><a href="#">TERMS OF USE</a></p>
+</div>
+</div>
+</div>
+</header>
+<h2 id="home">Print Page</h2>
+
+<form class="form" action="home.html">
+ <fieldset>
+   <legend><i>Order Information</i></legend>
+   <div class="row">
+     <div class="col-25">
+       <label for="number">Order(Tel) No. -</label>
+     </div>
+     <div class="col-75">
+       <input type="number" id="number" name="number" readonly >
+    </div>
+  </div>
+     <div class="row">
+       <div class="col-25">
+         <label for="date">Pick Up Date -</label>
+      </div>
+      <div class="col-75">
+        <input id="date" type="date" name="Date" readonly >
+      </div>
+    </div>
+        <br>
+  <input type="radio" name="ordertype" value="Delivery" id="deliver" disabled >Delivery
+  <input type="radio" name="ordertype" value="Pick Up" id= "pickup" disabled >Pick Up<br>
+  <input type="submit" id="cl" name="button" value="Clear Invoice">
+ </fieldset>
+</form>
+<br><br>
+
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Cake Description</th>
+        <th>Qty</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+    <tfoot>
+    <tr>
+      <td>Total</td>
+      <td id="qsum">0</td>
+      <td id="psum">0</td>
+    </tr>
+    </tfoot>
+</table>
+<br>
+<footer>
+@CityU2017sources of Images and text from Wikipidea & courtesy of all-free-download.com
+<br>
+<ul class="nav">
+  <li><a href="home.html">HOME</a></li>
+  <li><a href="order.html">ORDER</a></li>
+  <li><a href="about.html">ABOUT US</a></li>
+  <li><a href="#">TERMS OF USE</a></li>
+</ul>
+</footer>
+</body>
+</html>

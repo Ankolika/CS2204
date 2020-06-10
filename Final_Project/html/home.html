@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<head>
+   <meta charset="UTF-8">
+   <title>CITY'S CAKE</title>
+   <link rel="stylesheet" type="text/css" href="../css/main.css">
+   <link rel="stylesheet" type="text/css" href="../css/home.css">
+   <script rel="javascript" type="text/javascript" src="../javascript/cakemenu.js"></script>
+
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+   <style media="screen">
+
+   .slideshow-container{
+     max-width: 450px;
+     float: right;
+     border: 2px solid black;
+     margin-left: 0%;
+
+
+   }
+
+   #name{
+     text-align: center;
+     font-size: 150%;
+     font-family: cursive;
+   }
+    .pic{
+      width:100%;
+      height: 30%;
+    }
+
+    table{
+      width: 96%;
+
+    }
+   </style>
+ </head>
+ <body>
+   <header>
+
+ <div class="intro">
+   <figure id="logo">
+ <img src="../images/logo.png" alt="logo" id="log">
+ </figure>
+ <h1>CITY'S CAKE</h1><br>
+ <img class="balloons" src="../images/ballons.png" alt="balloons">
+ <div class="list">
+ <img src="../images/viewlist.png" alt="viewlist">
+    <div class="content">
+ <p><a href="home.html">HOME</a></p>
+ <p><a href="order.html">ORDER</a></p>
+ <p><a href="about.html">ABOUT US</a></p>
+ <p><a href="#">TERMS OF USE</a></p>
+</div>
+ </div>
+ </div>
+ </header>
+ <h2 id="home">HOME</h2>
+
+
+ <div class="slideshow-container">
+   <img class="pic" alt="" src="abc">
+   <div id="name"></div>
+   <table>
+     <caption><b>Nutrition Information</b></caption>
+     <thead>
+     <tr>
+       <th>Amount Per 100g</th>
+       <th>%</th>
+     </tr>
+   </thead>
+   <tbody>
+     <tr>
+       <td class="type"></td>
+       <td class="percentage"></td>
+     </tr>
+     <tr>
+       <td class="type"></td>
+       <td class="percentage"></td>
+     </tr>
+     <tr>
+       <td class="type"></td>
+       <td class="percentage"></td>
+     </tr>
+     <tr>
+       <td class="type"></td>
+       <td class="percentage"></td>
+     </tr>
+   </tbody>
+   <tfoot>
+     <tr>
+       <td>Total (may not add up to 100%)</td>
+       <td id="plural"></td>
+     </tr>
+   </tfoot>
+   </table>
+ </div>
+
+
+ <script type="text/javascript">
+document.getElementById("log").style.width="80px";
+document.getElementById("log").style.height="80px";
+window.onload=init;
+ function init(){
+ var i=0;
+ var j=0;
+ var database=initMenu();
+ var l= database.length;
+ var t=document.querySelectorAll(".type");
+ var p=document.querySelectorAll(".percentage");
+ var im=document.querySelector(".pic")
+
+
+ showMenu();
+ setInterval(showMenu, 3000);
+ function showMenu(){
+
+
+   if (i>=l){
+     i=0;
+
+   }
+   document.getElementById("name").innerHTML=database[i].description;
+   im.src=database[i].imagefile;
+   im.alt=database[i].description;
+   im.title=database[i].description;
+   var sum=0;
+   for (j=0; j<database.length; j++){
+     t[j].innerHTML=database[i].nutrition[j].type;
+     p[j].innerHTML=database[i].nutrition[j].percentage;
+
+     sum=Number(sum)+Number(database[i].nutrition[j].percentage);
+   }
+   document.getElementById("plural").innerHTML=sum;
+   i++;
+ }
+var index_video=0;
+ slideshow_video();
+
+ function slideshow_video(){
+ var slides=document.getElementsByClassName("video");
+ var i;
+ for(i=0; i<slides.length; i++){
+   slides[i].style.display="none";
+
+ }
+ index_video++;
+ if(index_video>slides.length)
+    index_video=1;
+ slides[index_video-1].style.display="block";
+ slides[index_video-1].load();
+ slides[index_video-1].onended=function()
+ {setTimeout(slideshow_video,5000);}
+ }
+}
+ </script>
+ <div class="container">
+ <video  autoplay muted class="video">
+ <source src="http://courses.cs.cityu.edu.hk/cs2204/chocolate.mp4" type="video/mp4">
+ </video>
+   <video  autoplay muted class="video">
+ <source src="http://courses.cs.cityu.edu.hk/cs2204/cakemaking-s.mp4" type="video/mp4">
+   </video>
+ </div>
+
+<div class="container">
+ <form action="order.html" class="form">
+  <fieldset>
+    <legend>Order Information</legend>
+    <div class="row">
+      <div class="col-25">
+        <label for="number">Tel No.</label>
+      </div>
+      <div class="col-75">
+        <input type="number" id="number" name="number" value="66504430">
+     </div>
+   </div>
+      <div class="row">
+        <div class="col-25">
+          <label for="date">Pick Up Date</label>
+       </div>
+       <div class="col-75">
+         <input type="date" name="Date" id="date" value="2018-11-20">
+       </div>
+     </div>
+         <br>
+   <input type="radio" name="ordertype" value="Delivery">Delivery
+   <input type="radio" name="ordertype" value="Pick Up">Pick Up<br>
+   <input type="submit" value="submit">
+   <input type="reset" value="reset">
+  </fieldset>
+ </form>
+ </div>
+
+ <footer>
+ @CityU2017sources of Images and text from Wikipidea & courtesy of all-free-download.com
+ <br>
+ <ul class="nav">
+   <li><a href="home.html">HOME</a></li>
+   <li><a href="order.html">ORDER</a></li>
+   <li><a href="about.html">ABOUT US</a></li>
+   <li><a href="#">TERMS OF USE</a></li>
+ </ul>
+ </footer>
+ </body>
+ </html>
